@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BlizzardTheme.Style">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/BlizzardTheme;component/Style/Palette.xaml" />
+        
+        <ResourceDictionary Source="pack://application:,,,/BlizzardTheme;component/Style/Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/BlizzardTheme;component/Style/CheckBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/BlizzardTheme;component/Style/ComboBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/BlizzardTheme;component/Style/ListBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/BlizzardTheme;component/Style/PasswordBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/BlizzardTheme;component/Style/RadioButton.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/BlizzardTheme;component/Style/ScrollBar.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/BlizzardTheme;component/Style/Slider.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/BlizzardTheme;component/Style/TabControl.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/BlizzardTheme;component/Style/TextBox.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <Style TargetType="Button" BasedOn="{StaticResource BlizzButton}" />
+    <Style TargetType="CheckBox" BasedOn="{StaticResource BlizzCheckBox}" />
+    <Style TargetType="ComboBox" BasedOn="{StaticResource BlizzComboBox}" />
+    <Style TargetType="ListBox" BasedOn="{StaticResource BlizzListbox}" />
+    <Style TargetType="ListBoxItem" BasedOn="{StaticResource BlizzListBoxItem}" />
+    <Style TargetType="PasswordBox" BasedOn="{StaticResource BlizzPasswordBox}" />
+    <Style TargetType="RadioButton" BasedOn="{StaticResource BlizzRadioButton}" />
+    <Style TargetType="ScrollBar" BasedOn="{StaticResource BlizzScrollBar}" />
+    <Style TargetType="Slider" BasedOn="{StaticResource BlizzSlider}" />
+    <Style TargetType="TabControl" BasedOn="{StaticResource BlizzTabControl}" />
+    <Style TargetType="TabItem" BasedOn="{StaticResource BlizzTabItem}" />
+    <Style TargetType="TextBox" BasedOn="{StaticResource BlizzTextBox}" />
+</ResourceDictionary>

@@ -1,0 +1,651 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BlizzardTheme.Style">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/BlizzardTheme;component/Style/Palette.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!--Button-->
+    <!--Palette-->
+    <SolidColorBrush x:Key="Blizz.Button.Background.Normal" Color="Black" Opacity="0.15" />
+    <SolidColorBrush x:Key="Blizz.Button.Background.Hover" Color="Black" Opacity="0.25" />
+    <SolidColorBrush x:Key="Blizz.Button.Background.Pressed" Color="Black" Opacity="0.2" />
+    <SolidColorBrush x:Key="Blizz.Button.Background.Focused" Color="Black" Opacity="0.25" />
+    <SolidColorBrush x:Key="Blizz.Button.Background.Disabled" Color="Black" Opacity="0.1" />
+    
+    <SolidColorBrush x:Key="Blizz.Button.BorderBrush.Normal" Color="White" Opacity="0.15" />
+    <SolidColorBrush x:Key="Blizz.Button.BorderBrush.Hover" Color="White" Opacity="0.25" />
+    <SolidColorBrush x:Key="Blizz.Button.BorderBrush.Pressed" Color="White" Opacity="0.1" />
+    <SolidColorBrush x:Key="Blizz.Button.BorderBrush.Focused" Color="White" Opacity="0.25" />
+    <SolidColorBrush x:Key="Blizz.Button.BorderBrush.Disabled" Color="White" Opacity="0.07" />
+    
+    <SolidColorBrush x:Key="Blizz.Button.Foreground.Normal" Color="White" Opacity="0.65" />
+    <SolidColorBrush x:Key="Blizz.Button.Foreground.Signature" Color="{StaticResource Blizz.Color.Signature}" Opacity="1" />
+    <SolidColorBrush x:Key="Blizz.Button.Foreground.Hover" Color="White" Opacity="1" />
+    <SolidColorBrush x:Key="Blizz.Button.Foreground.Pressed" Color="White" Opacity="0.65" />
+    <SolidColorBrush x:Key="Blizz.Button.Foreground.Disabled" Color="White" Opacity="0.2" />
+    
+    <!--Style-->
+    <Style x:Key="BlizzButton" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Blizz.Button.Background.Normal}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Blizz.Button.BorderBrush.Normal}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="{StaticResource Blizz.Button.Foreground.Signature}" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontFamily" Value="/ThemeTest;component/#Blizzard" />
+        <Setter Property="MinWidth" Value="90" />
+        <Setter Property="MinHeight" Value="34" />
+        <Setter Property="Padding" Value="17,8" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="2"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <ContentControl x:Name="ContentPresenter"
+                                        Content="{TemplateBinding Content}"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Blizz.Button.Background.Hover}" />
+                            <Setter Property="BorderBrush" Value="{StaticResource Blizz.Button.BorderBrush.Hover}" />
+                            <Setter Property="Foreground" Value="{StaticResource Blizz.Button.Foreground.Hover}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="ContentPresenter" Property="Margin" Value="1,1,-1,-1" />
+                            <Setter Property="Background" Value="{StaticResource Blizz.Button.Background.Pressed}" />
+                            <Setter Property="BorderBrush" Value="{StaticResource Blizz.Button.BorderBrush.Pressed}" />
+                            <Setter Property="Foreground" Value="{StaticResource Blizz.Button.Foreground.Pressed}" />
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Blizz.Button.Background.Focused}" />
+                            <Setter Property="BorderBrush" Value="{StaticResource Blizz.Button.BorderBrush.Focused}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{StaticResource Blizz.Button.Background.Disabled}" />
+                            <Setter Property="BorderBrush" Value="{StaticResource Blizz.Button.BorderBrush.Disabled}" />
+                            <Setter Property="Foreground" Value="{StaticResource Blizz.Button.Foreground.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    
+    <!--PrimaryButton-->
+    <!--Palette-->
+    <LinearGradientBrush x:Key="Blizz.PrimaryButton.Background.Normal" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FF0F99D9" Offset="0.1"/>
+        <GradientStop Color="#FF0177AF" Offset="0.9"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Blizz.PrimaryButton.Background.Hover" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FF36BFFE" Offset="0.1"/>
+        <GradientStop Color="#FF0298DE" Offset="0.9"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Blizz.PrimaryButton.Background.Pressed" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FF006DA0" Offset="0.1"/>
+        <GradientStop Color="#FF00618E" Offset="0.9"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Blizz.PrimaryButton.Background.Disabled" StartPoint="0,0" EndPoint="0,1" Opacity="0.1">
+        <GradientStop Color="#FF0F99D9" Offset="0.1"/>
+        <GradientStop Color="#FF0177AF" Offset="0.9"/>
+    </LinearGradientBrush>
+    
+    <SolidColorBrush x:Key="Blizz.PrimaryButton.Foreground.Normal" Color="White" Opacity="1" />
+    <SolidColorBrush x:Key="Blizz.PrimaryButton.Foreground.Disabled" Color="White" Opacity="0.1" />
+    
+    <LinearGradientBrush x:Key="Blizz.GreenButton.Background.Normal" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FF3AAD01" Offset="0.1"/>
+        <GradientStop Color="#FF2C8301" Offset="0.9"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Blizz.GreenButton.Background.Hover" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FF55DB13" Offset="0.1"/>
+        <GradientStop Color="#FF38A801" Offset="0.9"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Blizz.GreenButton.Background.Pressed" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FF266F01" Offset="0.1"/>
+        <GradientStop Color="#FF246A01" Offset="0.9"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Blizz.GreenButton.Background.Disabled" StartPoint="0,0" EndPoint="0,1" Opacity="0.1">
+        <GradientStop Color="#FF3AAD01" Offset="0.1"/>
+        <GradientStop Color="#FF2C8301" Offset="0.9"/>
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="Blizz.OrangeButton.Background.Normal" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FFD9810F" Offset="0.1"/>
+        <GradientStop Color="#FFAF6401" Offset="0.9"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Blizz.OrangeButton.Background.Hover" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FFfEA636" Offset="0.1"/>
+        <GradientStop Color="#FFDE7f02" Offset="0.9"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Blizz.OrangeButton.Background.Pressed" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FFA05B00" Offset="0.1"/>
+        <GradientStop Color="#FF8E5000" Offset="0.9"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Blizz.OrangeButton.Background.Disabled" StartPoint="0,0" EndPoint="0,1" Opacity="0.1">
+        <GradientStop Color="#FFD9810F" Offset="0.1"/>
+        <GradientStop Color="#FFAF6401" Offset="0.9"/>
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="Blizz.RedButton.Background.Normal" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FFFF3D3D" Offset="0.1"/>
+        <GradientStop Color="#FFD42626" Offset="0.9"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Blizz.RedButton.Background.Hover" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FFFF7474" Offset="0.1"/>
+        <GradientStop Color="#FFFF3838" Offset="0.9"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Blizz.RedButton.Background.Pressed" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#FFC22222" Offset="0.1"/>
+        <GradientStop Color="#FFAC1E1E" Offset="0.9"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="Blizz.RedButton.Background.Disabled" StartPoint="0,0" EndPoint="0,1" Opacity="0.1">
+        <GradientStop Color="#FFFF3D3D" Offset="0.1"/>
+        <GradientStop Color="#FFD42626" Offset="0.9"/>
+    </LinearGradientBrush>
+    
+    <SolidColorBrush x:Key="Blizz.SecondaryButton.Background.Normal" Color="Black" Opacity="0.15" />
+    <SolidColorBrush x:Key="Blizz.SecondaryButton.Background.Hover" Color="Black" Opacity="0.25" />
+    <SolidColorBrush x:Key="Blizz.SecondaryButton.Background.Pressed" Color="Black" Opacity="0.19" />
+    <SolidColorBrush x:Key="Blizz.SecondaryButton.Background.Disabled" Color="Black" Opacity="0.1" />
+
+    <!--Style-->
+    <Style x:Key="BlizzPrimaryButton" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Blizz.PrimaryButton.Background.Normal}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{StaticResource Blizz.PrimaryButton.Foreground.Normal}" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontFamily" Value="/ThemeTest;component/#Blizzard" />
+        <Setter Property="MinWidth" Value="90" />
+        <Setter Property="MinHeight" Value="34" />
+        <Setter Property="Padding" Value="17,8" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="2"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <ContentControl x:Name="ContentPresenter"
+                                        Content="{TemplateBinding Content}"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Blizz.PrimaryButton.Background.Hover}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Blizz.PrimaryButton.Background.Hover}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="ContentPresenter" Property="Margin" Value="1,1,-1,-1" />
+                            <Setter Property="Background" Value="{StaticResource Blizz.PrimaryButton.Background.Pressed}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{StaticResource Blizz.PrimaryButton.Background.Disabled}" />
+                            <Setter Property="Foreground" Value="{StaticResource Blizz.PrimaryButton.Foreground.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BlizzGreenButton" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Blizz.GreenButton.Background.Normal}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{StaticResource Blizz.PrimaryButton.Foreground.Normal}" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontFamily" Value="/ThemeTest;component/#Blizzard" />
+        <Setter Property="MinWidth" Value="90" />
+        <Setter Property="MinHeight" Value="34" />
+        <Setter Property="Padding" Value="17,8" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="2"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <ContentControl x:Name="ContentPresenter"
+                                        Content="{TemplateBinding Content}"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Blizz.GreenButton.Background.Hover}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Blizz.GreenButton.Background.Hover}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="ContentPresenter" Property="Margin" Value="1,1,-1,-1" />
+                            <Setter Property="Background" Value="{StaticResource Blizz.GreenButton.Background.Pressed}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{StaticResource Blizz.GreenButton.Background.Disabled}" />
+                            <Setter Property="Foreground" Value="{StaticResource Blizz.PrimaryButton.Foreground.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BlizzOrangeButton" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Blizz.OrangeButton.Background.Normal}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{StaticResource Blizz.PrimaryButton.Foreground.Normal}" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontFamily" Value="/ThemeTest;component/#Blizzard" />
+        <Setter Property="MinWidth" Value="90" />
+        <Setter Property="MinHeight" Value="34" />
+        <Setter Property="Padding" Value="17,8" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="2"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <ContentControl x:Name="ContentPresenter"
+                                        Content="{TemplateBinding Content}"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Blizz.OrangeButton.Background.Hover}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Blizz.OrangeButton.Background.Hover}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="ContentPresenter" Property="Margin" Value="1,1,-1,-1" />
+                            <Setter Property="Background" Value="{StaticResource Blizz.OrangeButton.Background.Pressed}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{StaticResource Blizz.OrangeButton.Background.Disabled}" />
+                            <Setter Property="Foreground" Value="{StaticResource Blizz.PrimaryButton.Foreground.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BlizzRedButton" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Blizz.RedButton.Background.Normal}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{StaticResource Blizz.PrimaryButton.Foreground.Normal}" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontFamily" Value="/ThemeTest;component/#Blizzard" />
+        <Setter Property="MinWidth" Value="90" />
+        <Setter Property="MinHeight" Value="34" />
+        <Setter Property="Padding" Value="17,8" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="2"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <ContentControl x:Name="ContentPresenter"
+                                        Content="{TemplateBinding Content}"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Blizz.RedButton.Background.Hover}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Blizz.RedButton.Background.Hover}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="ContentPresenter" Property="Margin" Value="1,1,-1,-1" />
+                            <Setter Property="Background" Value="{StaticResource Blizz.RedButton.Background.Pressed}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{StaticResource Blizz.RedButton.Background.Disabled}" />
+                            <Setter Property="Foreground" Value="{StaticResource Blizz.PrimaryButton.Foreground.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BlizzSecondaryButton" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource Blizz.SecondaryButton.Background.Normal}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{StaticResource Blizz.PrimaryButton.Foreground.Normal}" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontFamily" Value="/ThemeTest;component/#Blizzard" />
+        <Setter Property="MinWidth" Value="90" />
+        <Setter Property="MinHeight" Value="34" />
+        <Setter Property="Padding" Value="17,8" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="2"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <ContentControl x:Name="ContentPresenter"
+                                        Content="{TemplateBinding Content}"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Blizz.SecondaryButton.Background.Hover}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Blizz.SecondaryButton.Background.Hover}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="ContentPresenter" Property="Margin" Value="1,1,-1,-1" />
+                            <Setter Property="Background" Value="{StaticResource Blizz.SecondaryButton.Background.Pressed}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{StaticResource Blizz.SecondaryButton.Background.Disabled}" />
+                            <Setter Property="Foreground" Value="{StaticResource Blizz.PrimaryButton.Foreground.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    
+    <!--WindowButton-->
+    <!--Palette-->
+    <SolidColorBrush x:Key="Blizz.WindowButton.Foreground.Normal" Color="White" Opacity="0.2" />
+    <SolidColorBrush x:Key="Blizz.WindowButton.Foreground.Hover" Color="White" Opacity="0.5" />
+    <SolidColorBrush x:Key="Blizz.WindowButton.Foreground.Pressed" Color="White" Opacity="0.2" />
+    <SolidColorBrush x:Key="Blizz.WindowButton.Foreground.Disabled" Color="White" Opacity="0.07" />
+
+    <DropShadowEffect x:Key="Blizz.WindowButton.Effect.Hover" BlurRadius="5" Color="White" ShadowDepth="0" Opacity="0.5" />
+
+    <!--Style-->
+    <Style x:Key="BlizzWindowCloseButton" TargetType="Button" BasedOn="{StaticResource BlizzButton}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{StaticResource Blizz.WindowButton.Foreground.Normal}" />
+        <Setter Property="MinWidth" Value="20" />
+        <Setter Property="MinHeight" Value="20" />
+        <Setter Property="Padding" Value="11" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Background="{TemplateBinding Background}"
+                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <Path x:Name="Shape"
+                              Width="9"
+                              Height="9"
+                              Data="M 0,0 1.5,0 4.5,3 7.5,0 9,0 9,1.5 6,4.5 9,7.5 9,9 7.5,9 4.5,6 1.5,9 0,9 0,7.5 3,4.5 0,1.5"
+                              Fill="{TemplateBinding Foreground}"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Stretch="Fill" />
+                        <ContentControl x:Name="ContentPresenter"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource Blizz.WindowButton.Foreground.Hover}" />
+                            <Setter Property="Effect" Value="{StaticResource Blizz.WindowButton.Effect.Hover}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Shape" Property="Margin" Value="1,1,-1,-1" />
+                            <Setter Property="Foreground" Value="{StaticResource Blizz.WindowButton.Foreground.Pressed}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{StaticResource Blizz.WindowButton.Foreground.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BlizzWindowMaximizeButton" TargetType="Button" BasedOn="{StaticResource BlizzButton}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{StaticResource Blizz.WindowButton.Foreground.Normal}" />
+        <Setter Property="MinWidth" Value="20" />
+        <Setter Property="MinHeight" Value="20" />
+        <Setter Property="Padding" Value="9,11" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Background="{TemplateBinding Background}"
+                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <Path x:Name="Shape"
+                              Width="11"
+                              Height="9"
+                              Data="M 0,0 11,0 11,9 0,9 0,2 2,2 2,7 9,7 9,2 0,2"
+                              Fill="{TemplateBinding Foreground}"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Stretch="Fill" />
+                        <ContentControl x:Name="ContentPresenter"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource Blizz.WindowButton.Foreground.Hover}" />
+                            <Setter Property="Effect" Value="{StaticResource Blizz.WindowButton.Effect.Hover}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Shape" Property="Margin" Value="1,1,-1,-1" />
+                            <Setter Property="Foreground" Value="{StaticResource Blizz.WindowButton.Foreground.Pressed}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{StaticResource Blizz.WindowButton.Foreground.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BlizzWindowMinizieButton" TargetType="Button" BasedOn="{StaticResource BlizzButton}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Foreground" Value="{StaticResource Blizz.WindowButton.Foreground.Normal}" />
+        <Setter Property="MinWidth" Value="20" />
+        <Setter Property="MinHeight" Value="20" />
+        <Setter Property="Padding" Value="9,11" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Background="{TemplateBinding Background}"
+                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <Path x:Name="Shape"
+                              Width="11"
+                              Height="9"
+                              Data="M 0,0 0,7 11,7 11,9 0,9"
+                              Fill="{TemplateBinding Foreground}"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              Stretch="Fill" />
+                        <ContentControl x:Name="ContentPresenter"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource Blizz.WindowButton.Foreground.Hover}" />
+                            <Setter Property="Effect" Value="{StaticResource Blizz.WindowButton.Effect.Hover}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Shape" Property="Margin" Value="1,1,-1,-1" />
+                            <Setter Property="Foreground" Value="{StaticResource Blizz.WindowButton.Foreground.Pressed}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{StaticResource Blizz.WindowButton.Foreground.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    
+    <!--LightButton-->
+    <!--Palette-->
+    <SolidColorBrush x:Key="Blizz.LightButton.BorderBrush.Normal" Color="White" Opacity="0.1" />
+    <SolidColorBrush x:Key="Blizz.LightButton.BorderBrush.Hover" Color="White" Opacity="0.35" />
+    <SolidColorBrush x:Key="Blizz.LightButton.BorderBrush.Pressed" Color="White" Opacity="0.35" />
+    <SolidColorBrush x:Key="Blizz.LightButton.BorderBrush.Disabled" Color="White" Opacity="0.1" />
+    
+    <SolidColorBrush x:Key="Blizz.LightButton.Foreground.Normal" Color="White" Opacity="0.6" />
+    <SolidColorBrush x:Key="Blizz.LightButton.Foreground.Hover" Color="White" Opacity="0.8" />
+    <SolidColorBrush x:Key="Blizz.LightButton.Foreground.Pressed" Color="White" Opacity="0.4" />
+    <SolidColorBrush x:Key="Blizz.LightButton.Foreground.Disabled" Color="White" Opacity="0.2" />
+
+    <!--Style-->
+    <Style x:Key="BlizzLightButton" TargetType="Button">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="{StaticResource Blizz.LightButton.BorderBrush.Normal}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="{StaticResource Blizz.LightButton.Foreground.Normal}" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontFamily" Value="/ThemeTest;component/#Blizzard" />
+        <Setter Property="MinWidth" Value="32" />
+        <Setter Property="MinHeight" Value="32" />
+        <Setter Property="Padding" Value="4" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}">
+                        <ContentControl x:Name="ContentPresenter"
+                                        Content="{TemplateBinding Content}"
+                                        OpacityMask="{TemplateBinding Foreground}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        ContentTemplateSelector="{TemplateBinding ContentTemplateSelector}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="{StaticResource Blizz.LightButton.BorderBrush.Hover}" />
+                            <Setter TargetName="ContentPresenter" Property="OpacityMask" Value="{StaticResource Blizz.LightButton.Foreground.Hover}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="ContentPresenter" Property="Margin" Value="1,1,-1,-1" />
+                            <Setter Property="BorderBrush" Value="{StaticResource Blizz.LightButton.BorderBrush.Pressed}" />
+                            <Setter TargetName="ContentPresenter" Property="OpacityMask" Value="{StaticResource Blizz.LightButton.Foreground.Pressed}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="BorderBrush" Value="{StaticResource Blizz.LightButton.BorderBrush.Disabled}" />
+                            <Setter TargetName="ContentPresenter" Property="OpacityMask" Value="{StaticResource Blizz.LightButton.Foreground.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,126 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BlizzardTheme.Style">
+    
+    <!--ListBoxItem-->
+    <!--Palette-->
+    <SolidColorBrush x:Key="Blizz.ListBoxItem.Background.Hover" Color="White" Opacity="0.05" />
+    <SolidColorBrush x:Key="Blizz.ListBoxItem.Background.Selected" Color="White" Opacity="0.08" />
+    
+    <SolidColorBrush x:Key="Blizz.ListBoxItem.Foreground.Normal" Color="White" Opacity="0.5" />
+    <SolidColorBrush x:Key="Blizz.ListBoxItem.Foreground.Hover" Color="White" Opacity="1" />
+    <SolidColorBrush x:Key="Blizz.ListBoxItem.Foreground.Selected" Color="White" Opacity="1" />
+    <SolidColorBrush x:Key="Blizz.ListBoxItem.Foreground.Disabled" Color="White" Opacity="0.2" />
+    
+    <!--Style-->
+    <Style x:Key="BlizzListBoxItem" TargetType="{x:Type ListBoxItem}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="MinHeight" Value="44" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontFamily" Value="/ThemeTest;component/#Blizzard" />
+        <Setter Property="Padding" Value="18,5" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
+        <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource AncestorType={x:Type ItemsControl}}}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                    <Grid Background="{TemplateBinding Background}"
+                          SnapsToDevicePixels="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Rectangle x:Name="SelectBar"
+                                   Grid.Column="0"
+                                   Visibility="Collapsed"
+                                   Fill="{StaticResource Blizz.Brush.Signature}"
+                                   HorizontalAlignment="Stretch" />
+                        <Border Grid.Column="1"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Blizz.ListBoxItem.Background.Hover}" />
+                            <Setter Property="Foreground" Value="{StaticResource Blizz.ListBoxItem.Foreground.Hover}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="{StaticResource Blizz.ListBoxItem.Background.Selected}" />
+                            <Setter Property="Foreground" Value="{StaticResource Blizz.ListBoxItem.Foreground.Selected}" />
+                            <Setter TargetName="SelectBar" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{StaticResource Blizz.ListBoxItem.Foreground.Disabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    
+    <!--ListBox-->
+    <!--Palette-->
+    <SolidColorBrush x:Key="Blizz.ListBox.Background.Normal" Color="Black" Opacity="0.14" />
+    <SolidColorBrush x:Key="Blizz.ListBox.Background.Disabled" Color="Black" Opacity="0.03" />
+
+    <SolidColorBrush x:Key="Blizz.ListBox.BorderBrush.Normal" Color="White" Opacity="0.1" />
+    <SolidColorBrush x:Key="Blizz.ListBox.BorderBrush.Disabled" Color="White" Opacity="0.07" />
+
+    <!--Style-->
+    <Style x:Key="BlizzListbox" TargetType="{x:Type ListBox}">
+        <Setter Property="Background" Value="{StaticResource Blizz.ListBox.Background.Normal}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Blizz.ListBox.BorderBrush.Normal}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Foreground" Value="{StaticResource Blizz.ListBoxItem.Foreground.Normal}"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="ItemContainerStyle" Value="{StaticResource BlizzListBoxItem}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBox}">
+                    <Border x:Name="Bd" 
+                            Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            SnapsToDevicePixels="True">
+                        <ScrollViewer Focusable="False" Padding="{TemplateBinding Padding}">
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </ScrollViewer>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" TargetName="Bd" Value="{StaticResource Blizz.ListBox.Background.Disabled}"/>
+                            <Setter Property="BorderBrush" TargetName="Bd" Value="{StaticResource Blizz.ListBox.BorderBrush.Disabled}"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsGrouping" Value="True"/>
+                                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="FocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
